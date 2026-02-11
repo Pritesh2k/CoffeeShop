@@ -7,7 +7,7 @@ interface NavProps {
 }
 
 export default function Nav({ smootherRef }: NavProps) {
-  const sections = ["home", "menu", "gallery", "location"];
+  const sections = ["home", "gallery", "menu", "location"];
 
   const handleScrollTo = (id: string) => {
     // ✅ Guard against undefined

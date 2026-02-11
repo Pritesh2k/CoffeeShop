@@ -48,7 +48,7 @@ export default function Hero({ smootherRef }: HeroProps) {
       // Zoom effect on image
       tl.fromTo(
         imageRef.current,
-        { scale: 1.5 },
+        { scale: 1.2 },
         { scale: 1, ease: "none", duration: 1 }
       );
 

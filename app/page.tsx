@@ -35,8 +35,8 @@ export default function Home() {
 
       <div id="smooth-content">
         <Hero smootherRef={smootherRef}/>
-        <MenuSection />
         <GallerySection />
+        <MenuSection />
         <LocationSection />
       </div>
     </div>
