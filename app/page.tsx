@@ -34,7 +34,7 @@ export default function Home() {
       <Nav smootherRef={smootherRef} />
 
       <div id="smooth-content">
-        <Hero />
+        <Hero smootherRef={smootherRef}/>
         <MenuSection />
         <GallerySection />
         <LocationSection />

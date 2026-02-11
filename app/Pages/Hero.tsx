@@ -4,15 +4,31 @@ import Image from "next/image";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Hero() {
+interface HeroProps {
+  smootherRef: React.RefObject<ScrollSmoother | null>;
+}
+
+export default function Hero({ smootherRef }: HeroProps) {
   const heroRef = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLDivElement | null>(null);
   const tasteRef = useRef<HTMLHeadingElement | null>(null);
   const priceRef = useRef<HTMLHeadingElement | null>(null);
   const ctaRef = useRef<HTMLButtonElement | null>(null);
+
+    const handleScrollTo = (id: string) => {
+    // ✅ Guard against undefined
+    if (!smootherRef.current) return;
+
+    try {
+      smootherRef.current.scrollTo(`#menu`, true);
+    } catch (e) {
+      console.warn("ScrollSmoother not ready:", e);
+    }
+  };
 
   useEffect(() => {
     if (!heroRef.current) return;
@@ -66,6 +82,7 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
+      id="home"
       className="relative h-[150vh] w-full overflow-hidden"
     >
       {/* Background Image */}
@@ -83,7 +100,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/30" />
 
       {/* Text & CTA */}
-      <div className="absolute top-80 right-10 w-[50vw] h-[50vh] flex flex-col items-end justify-center gap-6">
+      <div className="absolute top-100 right-85 w-[50vw] h-[50vh] flex flex-col items-end justify-center gap-6">
         <h1
           ref={tasteRef}
           className="text-[#F9F9F7] text-6xl md:text-8xl font-semibold opacity-0"
@@ -100,6 +117,7 @@ export default function Hero() {
 
         <button
           ref={ctaRef}
+          onClick={() => handleScrollTo("menu")}
           className="mt-6 px-8 py-3 border border-white text-white uppercase tracking-widest opacity-0 transition-all duration-300 hover:bg-white hover:text-black"
         >
           Menu
