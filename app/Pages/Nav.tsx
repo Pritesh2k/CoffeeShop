@@ -42,7 +42,7 @@ export default function Nav({ smootherRef }: NavProps) {
       // Set initial positions
       gsap.set(luxRef.current, { y: 80, opacity: 0 });
       gsap.set(coffeeRef.current, { x: -60, opacity: 0 });
-      gsap.set(buttons, { y: -50, opacity: 0 }); // buttons start above
+      gsap.set(buttons, { x: -50, opacity: 0 }); // buttons start above
       gsap.set(underlineRef.current, { width: 0, opacity: 0 }); // underline hidden
 
       // Animate LUX and COFFEE
@@ -52,13 +52,14 @@ export default function Nav({ smootherRef }: NavProps) {
         .to(titleHoldeRef.current, {
           top: "0",
           left: "0",
-          xPercent: -25,
-          yPercent: -20,
+          xPercent: -28,
+          yPercent: -25,
           scale: 0.5,
           duration: 1.5,
         }, "-=1")
+        .fromTo(navButtonsRef.current, {width: 0, y: 50, x: 100, opacity: 0}, {width: "25vw", y: -100, x: -180, opacity: 1, duration: 1, ease: "power3.out"})
         // Buttons fade in from top with stagger
-        .to(buttons, { y: 0, opacity: 1, duration: 0.8, stagger: 0.15 }, "-=1");
+        .to(buttons, { x: 0, opacity: 1, duration: 0.8, stagger: 0.15 }, "-=1");
 
       // Hover effect for underline + text color change
       buttons.forEach((btn) => {
@@ -119,13 +120,13 @@ export default function Nav({ smootherRef }: NavProps) {
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-51 flex justify-center items-center w-[60vw] h-[40vh] gap-1"
       >
         <div ref={luxRef} className="font-bold text-[15vw] text-white">LUX</div>
-        <div ref={coffeeRef} className="font-thin text-[10vw] text-white">Coffee</div>
+        <div ref={coffeeRef} className="font-thin text-[10vw] text-white">Cafe</div>
       </div>
 
       {/* Nav Buttons */}
       <div
         ref={navButtonsRef}
-        className="absolute bottom-0 right-0 z-51 flex justify-evenly items-center w-[25vw] h-[10vh] gap-4 rounded-lg"
+        className="absolute bottom-5 right-15 z-51 flex justify-evenly items-center w-[25vw] h-[10vh] gap-4 rounded-lg border border-white/20 bg-black/20"
       >
         {sections.map((section) => (
           <button
@@ -139,7 +140,7 @@ export default function Nav({ smootherRef }: NavProps) {
         {/* Shared underline */}
         <div
           ref={underlineRef}
-          className="absolute bottom-5 left-0 h-1 bg-[#231C1A]"
+          className="absolute bottom-5 left-0 h-[2px] bg-[#231C1A]"
         />
       </div>
     </>
