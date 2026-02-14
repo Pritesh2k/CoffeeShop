@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
@@ -31,10 +32,10 @@ export default function Home() {
 
   return (
     <div id="smooth-wrapper">
-      <Nav smootherRef={smootherRef} />
+      <Nav />
 
       <div id="smooth-content">
-        <Hero smootherRef={smootherRef}/>
+        <Hero />
         <GallerySection />
         <MenuSection />
         <LocationSection />

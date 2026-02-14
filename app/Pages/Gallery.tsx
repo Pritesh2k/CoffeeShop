@@ -1,18 +1,13 @@
-"use client";
+import React from 'react'
 
-import Image from "next/image";
-import { useRef } from "react";
-
-export default function Gallery() {
-    const imageRef = useRef<HTMLDivElement | null>(null);
-
+function Gallery() {
     return (
         <section
-            id="gallery"
-            className="relative h-screen w-full flex items-center justify-center bg-[#B59683] px-4 overflow-hidden"
-        >
-
+            id="location"
+            className="h-screen flex items-center justify-center bg-[#F9F9F7] text-[#2A2A2D] text-4xl md:text-6xl px-4 text-center">
+                Gallery
         </section>
-            
-    );
+    )
 }
+
+export default Gallery
